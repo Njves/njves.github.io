@@ -351,7 +351,7 @@ class Game {
         this.avdeevAmount = document.getElementById('avdeev_amount')
         this.firstClick = this.storage.getFirstClick()   
         this.start = this.storage.getStartTime()
-        this.clickCount = 7600
+        
     }
     init(counter, tutorial) {
         counter.textContent = this.clickCount
@@ -412,7 +412,7 @@ class Game {
     }
 
     onFirst(){
-        this.isFirst = "true"
+        
         let board = new Board()
         let f = "Привет, ты попал на снюсовую иглу. Теперь ты обязан собирать паки чтобы выжить. Открывая шайбу ты получаешь 1 пак. Покупай друзей в магазине, за паки, они будут приносить тебе прибыль"
         
