@@ -1,0 +1,258 @@
+@font-face{
+    font-family: "Pixel Font7";
+    src: url("20944.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+#snus {
+    width: 200px;
+    height: 200px;
+    background-image: url('snus/snus1.png');
+    background-size: cover;
+    z-index: -1;
+   
+    
+}
+.main{
+    margin-left: 50px;
+    width: 200px;
+    background-color: #8BC34A;
+    margin-top: 81px;
+}
+
+#pak {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
+
+#counter {
+    width: 200px;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;   
+    font-size: 30px;
+    font-family: Pixel Font7;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
+.record {
+    width: 200px;
+    height: 30px;
+    background-color: #8BC34A;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;   
+    margin-top: 50px;
+    font-family: Pixel Font7;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+    
+                                 
+}
+
+#max {
+    width: 200px;
+    height: 30px;
+    background-color: #8BC34A;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    padding-right: 10px;
+    font-family: Pixel Font7;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently */   
+    
+    
+}
+
+#not_enough_money {
+    font-family: Pixel Font7;
+    position: absolute;
+    left: 500px;
+    top: 150px;
+    color: white;
+    font-size: 30px; 
+    padding: 10px;
+    background-color: red;
+    visibility: hidden;
+    
+}
+
+#upSnus {
+    width: 220px;
+    height: 220px;
+    z-index: 1001;       
+}
+
+#clear {
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 70px;
+    
+}
+
+body{
+    /*background-image: url('background.jpg');
+    background-size: cover; */
+    background-color: #266829;
+    margin: 0;
+    padding: 0;
+}
+
+#tutorial {
+    background-image: url('tutorial.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    right: 100px;
+    top: 30%;
+    z-index: 1;
+    visibility: visible;
+    
+}
+#level {
+    font-family: Pixel Font7;
+    position: absolute;
+    left: 20px;
+    top: 47px;
+    color:#FBC02D;
+    font-size: 20px; 
+    text-shadow: 1px 1px 1px #000;
+    margin-top: 50px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none; 
+}
+
+.have_upgrades {
+    font-family: Pixel Font7;
+    position: absolute;
+    left: 30%;
+    top: 88px;
+    width: 500px;
+    height: 500px;
+    background-color: #4CAF50;;
+    padding-left: 10px;
+    margin-top: 50px;
+}
+
+
+.logo {   
+    position: absolute;
+    left: 30%;
+    top: 0px;   
+    font-size: 22px;  
+    padding: 10px;
+    width: 500px;
+    text-align: center;
+   
+}
+
+.desc {
+    
+    color: white;
+}
+
+#board {
+    background-image: url('board.png');
+    width: 710px;
+    height: 580px;
+    position: absolute;
+    left: 20%;
+    top: 1%;
+    z-index: 15;
+    padding-left: 85px;
+    padding-top: 70px;
+    
+}
+.board_text {
+    font-family: Pixel Font7;
+    color: white;
+    margin: 0;
+    width: 630px;
+    height: 515px;
+    font-size: 25px;
+}
+#board_button {
+    margin-left: 40%;
+    background-color: #757575;
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    background: #757575;
+}
+.store {
+    position: absolute;
+    font-family: Pixel Font7;
+    top: 130px;
+    background-color: #4CAF50;
+    right: 200px;
+    font-size: 20px;
+    height: 520px;
+    width: 200px;
+    
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+    
+}
+
+
+#snus:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.95);
+}
+
+#low:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.95);
+}
+
+#medium:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.95);
+}
+
+#hard:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.95);
+}
+
+#dead:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.95);
+}
