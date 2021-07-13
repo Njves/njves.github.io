@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='style.css'/>
+    <title>СнюсоКликер</title>
+</head>
+<body>
+    <script src="anime.min.js"></script>
+    <audio controls>
+        <source src="audio.mp3" type="audio/mp3">
+        Тег audio не поддерживается вашим браузером. 
+        <a href="audio/music.mp3">Скачайте музыку</a>.
+      </audio>
+      
+    <div class="main">
+        
+        <p id='counter'>0</p>
+        <div id="tutorial"></div>
+        <span class="record">Рекорд: </span>
+        <span id="max"></span>
+        <p id="level">Ваше текущие звание: </p>
+        
+        <div id='upSnus'>
+            <div id='snus'>
+            </div>
+        </div>
+        <button id='clear'>Очистить</button>
+    </div>
+    <img class="logo" src="logo.jpg"/>
+  
+    <div class="store">
+        <h2>Магазин</h2>
+        <hr>
+        <div id="low">
+            <span class="low_text">Максим&#128554;</span><br/>
+            <span class="desc">Максим очень долго вкидывается</span><br/>
+            <span class="p/s"> +1 п/с, 100 паков</span>
+        </div>
+        <hr>
+        <div id="medium">
+            <span class="medium_text">Романов&#129316;</span><br/>
+            <span class="desc">Серьезный молодой человек</span><br/>
+            <span class="p/s"> +5 п/c, 3000 паков</span>
+        </div>
+        <hr>
+        <div id="hard">
+            <span class="hard_text">Кобылян&#129397;</span><br/>
+            <span class="desc">После вкида с ним, не все выживают...</span><br/>
+            <span class="p/s"> +15 п/c, 12000 паков</span>
+        </div>
+        <hr>
+        <div id="dead">
+            <span class="dead_text">Авдючкин</span><img src="https://vk.com/emoji/e/f09f9888.png" width="20" height="20"/><br/>
+            <span class="desc">Говорят он кидал насвай</span><br/>
+            <span class="p/s"> +40 п/c, 16384</span>
+        </div>
+        <hr>
+    </div>
+    <div id="board">
+        <p class="board_text"></p>
+        <button id="board_button">Закрыть доску</button> 
+    </div>
+    <div class="have_upgrades">
+        <h2>Улучшения</h2>
+        <hr>
+        <img src="maksim.jpg" class="maksim"/>
+        <span>Максим: </span> <span id="maksim_amount"></span>
+        <hr>
+        <img src="romanov.jpg" width="64" height="80" class="romanov"/>
+        <span>Романов: </span> <span id="romanov_amount"></span>
+        <hr>
+        <span>Кобылян: </span><span id="kobik_amount"></span>
+        <hr>
+        <span>Авдюков: </span> <span id="avdeev_amount"></span>
+        <hr>
+    </div>
+
+    <p id="not_enough_money">Не хватает средств!</p>
+    
+    
+
+    
+    
+    
+    <script src='learn.js'></script>
+  
+    
+</body>
+
+</html>
