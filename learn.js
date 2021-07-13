@@ -433,6 +433,7 @@ class Game {
 
     updateCounter(counter) {
         counter.textContent = this.clickCount
+        this.storage.setFirstClick(this.clickCount)
         let max = document.getElementById("max")
         max.textContent = this.storage.getMaxCount()
         this.setLevel()
