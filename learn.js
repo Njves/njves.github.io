@@ -213,6 +213,10 @@ class Board {
         
     }
 
+    hide() {
+        this.board.style.visibility = 'hidden'
+    }
+
     
 }
 
@@ -415,15 +419,17 @@ class Game {
         
         let board = new Board()
         let f = "Привет, ты попал на снюсовую иглу. Теперь ты обязан собирать паки чтобы выжить. Открывая шайбу ты получаешь 1 пак. Покупай друзей в магазине, за паки, они будут приносить тебе прибыль"
-        
         board.writeText(f)
+        
         if(this.isFirst == 'true' && this.firstClick < 10){
             this.tutorial.style.visibility = 'visible'
             this.storage.setIsFirst('false')
             
+            
         }else{
             console.log('Change')
             this.tutorial.style.visibility = 'hidden'
+            board.hide()
         }
     }
 
