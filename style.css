@@ -206,6 +206,20 @@ body{
     height: 40px;
     background: #757575;
 }
+.update {
+    font-family: Pixel Font7;
+    position: absolute;
+    right: 5%;
+    top: 0%;
+    
+}
+
+#version {
+    font-family: Pixel Font7;
+    position: absolute;
+    top: 95%;
+    left: 5%;
+}
 .store {
     position: absolute;
     font-family: Pixel Font7;

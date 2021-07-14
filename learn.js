@@ -104,8 +104,16 @@ class Storage {
         localStorage.setItem('startTime', startTime)
     }
 
+    isUpdated() {
+        return localStorage.getItem('isUpdated')
+    }
+
+    setIsUpdated(isUpdated) {
+        localStorage.setItem('isUpdated', isUpdated)
+    }
    
 }
+
 
 class Level {
     
@@ -210,8 +218,9 @@ class Board {
             i = 0
         })
         
-        
     }
+
+
 
     hide() {
         this.board.style.visibility = 'hidden'
@@ -223,6 +232,13 @@ class Board {
 class FirstPlayScript {
     constructor() {
 
+    }
+}
+
+class UpdatedInformer{
+    constructor(storage) {
+        this.storage = storage
+        this.isUpdated = this.storage.isUpdated()
     }
 }
 
@@ -355,6 +371,7 @@ class Game {
         this.avdeevAmount = document.getElementById('avdeev_amount')
         this.firstClick = this.storage.getFirstClick()   
         this.start = this.storage.getStartTime()
+        this.updatedInformer = new UpdatedInformer(this.storage)    
         
     }
     init(counter, tutorial) {
@@ -362,6 +379,7 @@ class Game {
         this.tutorial = tutorial
         this.onFirst()
         this.setLevel()
+        max.textContent = this.storage.getMaxCount() 
     }
     setCurrentLevel() {
         this.level = this.levelManager.getCurrentLevel()
@@ -391,6 +409,7 @@ class Game {
     
     onClick() {
         this.clickCount += 1
+        
     }
 
     save() {
@@ -421,10 +440,10 @@ class Game {
         let f = "Привет, ты попал на снюсовую иглу. Теперь ты обязан собирать паки чтобы выжить. Открывая шайбу ты получаешь 1 пак. Покупай друзей в магазине, за паки, они будут приносить тебе прибыль"
         board.writeText(f)
         
-        if(this.isFirst == 'true' && this.firstClick < 10){
+        
+        if(this.isFirst == null && this.firstClick < 10){
             this.tutorial.style.visibility = 'visible'
-            this.storage.setIsFirst('false')
-            
+            this.storage.setIsFirst('false')  
             
         }else{
             console.log('Change')
@@ -432,6 +451,8 @@ class Game {
             board.hide()
         }
     }
+
+
 
     toString(){
         return 'game:' + this.clickCount
@@ -441,16 +462,15 @@ class Game {
         counter.textContent = this.clickCount
         this.storage.setFirstClick(this.clickCount)
         let max = document.getElementById("max")
-        max.textContent = this.storage.getMaxCount()
         this.setLevel()
-        if (this.clickCount > this.storage.getMaxCount()){
+        if (this.clickCount >= this.storage.getMaxCount()){
             this.storage.setMaxCount(this.clickCount)
-            
+            max.textContent = this.storage.getMaxCount()    
         }
     }
 
     buyUpgrade(price){
-        if (this.clickCount > price) {
+        if (this.clickCount >= price) {
             this.clickCount -= price
         }else{
             throw new Error("Недостаточно средств")
@@ -460,11 +480,15 @@ class Game {
     showOnNotEnoughMoney() {
         let not_enough_money_message = document.getElementById("not_enough_money")
         not_enough_money_message.style.visibility = 'visible'
-        setTimeout(function(handler){
-            not_enough_money_message.style.visibility = 'hidden'
-        }, 3000)
-        
-        
+        anime({
+                targets: '#not_enough_money',
+                easing: 'linear',
+                duration: 2000,
+                delay: 3000,
+                complete: function(){
+                    not_enough_money_message.style.visibility = 'hidden'
+                }
+            })   
     }
 }
 
@@ -477,8 +501,8 @@ window.onunload = function() {
     game.saveStartTime()
 }
 
-
 let game = new Game()
+
 console.log(game.calculateCount())
 let store = new Store(game)
 let snusClick = document.getElementById('snus')
