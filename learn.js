@@ -382,6 +382,7 @@ class Game {
         max.textContent = this.storage.getMaxCount() 
     }
     setCurrentLevel() {
+        this.levelManager = new LevelManager(this.clickCount)
         this.level = this.levelManager.getCurrentLevel()
     }
 
@@ -401,6 +402,7 @@ class Game {
         snus.onerror = function() {
             console.log('error')
         }
+        console.log('setLevel')
     }
 
     getClickCount() {
@@ -441,7 +443,7 @@ class Game {
         board.writeText(f)
         
         
-        if(this.isFirst == null && this.firstClick < 10){
+        if(this.isFirst == null || this.isFirst == 'false' && this.firstClick < 10){
             this.tutorial.style.visibility = 'visible'
             this.storage.setIsFirst('false')  
             
@@ -459,10 +461,10 @@ class Game {
     }
 
     updateCounter(counter) {
+        this.setLevel()
         counter.textContent = this.clickCount
         this.storage.setFirstClick(this.clickCount)
         let max = document.getElementById("max")
-        this.setLevel()
         if (this.clickCount >= this.storage.getMaxCount()){
             this.storage.setMaxCount(this.clickCount)
             max.textContent = this.storage.getMaxCount()    
@@ -503,7 +505,6 @@ window.onunload = function() {
 
 let game = new Game()
 
-console.log(game.calculateCount())
 let store = new Store(game)
 let snusClick = document.getElementById('snus')
 let counter = document.getElementById('counter')
@@ -516,7 +517,7 @@ game.initUpgrades()
 game.updateCounter(counter)
 
 
-
+console.log(game.storage.getIsFirst())
 
 clear.addEventListener('click', function click(event) {
     if (confirm("Вы уверенны что хотите удалить все паки?")){
@@ -555,6 +556,14 @@ document.addEventListener('keyup', function(event){
     index = keyDowns.indexOf(event.key)
     keyDowns.splice(index)
    
+})
+man = document.getElementById('man')
+man.addEventListener('click', function(){
+    if(game.clickCount >= 500){
+        man.style.visibility = 'hidden'
+    }else{
+        alert('Мужика можно убрать за писот(500) паков')
+    }
 })
 
 
