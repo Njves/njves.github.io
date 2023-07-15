@@ -9,64 +9,105 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Портфолио</title>
 </head>
-
-<body>
-    <div class="main">
-        <header>
-            <div class="avatar-background">
-                <img src="img/ava.jpg" width="170" height="170" class="avatar" />
-            </div>
-            <div class="info">
-                <h1 class="my_name">Егор Луговкин</h1>
-                <h3 class="my_position">Backend Python Developer</h3>
-                <span>Связаться со мной</span>
-            </div>
-        </header>
-        <div class="w_header">
-            <div class="profile">
-                <div class="desc">
-                    <p>Немного обо мне, меня зовут Егор Луговкин я занимаюсь разработкой Backend на Python.<br />
-                        Я обучаюсь в университете СФУ на 2 курсе программной инженерии.<br />
-                        Из хобби<br />
-                    <ul>
-                        <li>Научные конференции</li>
-                        <li>Хакатоны</li>
-                        <li>Чтение</li>
-                    </ul>
-                    </p>
-                </div>
-                <div class="projects">
-                    <p>Мои проекты</p>
-                    <ul>
-                        <li>Control System Database</li>
-                        <li>Chat</li>
-                        <li>School Control System</li>
-                    </ul>
-                </div>
-                <div class="languages">
-                    <p>Мой стек технологий</p>
-                    <ul>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>Django</li>
-                        <li>Flask</li>
-                        <li>Android SDK</li>
-                        <li>SQLite</li>
-                        <li>PostgreSQL</li>
-                    </ul>
-                </div>
-                <div class="society">
-                    <p>Мои соц.сети</p>
-                    <a href="https://tlgg.ru/@maloy_plakech"><img
-                            src="https://img.shields.io/badge/Telegram-%40maloy__plakech-blue" /></a><br />
-                    <a href="vk.com/elugovkin"><img src="https://img.shields.io/badge/VK-elugovkin-blue" /></a><br />
-                    <a><img src="https://img.shields.io/github/followers/Njves?style=social" /></a>
+<body style="background-color: #e7e5e5">
+<header>
+    <div class="container-fluid header-avatar px-2 pt-2">
+        <img class="rounded-circle shadow-2-strong avatar" width="200px" alt="avatar" src="img/ava.jpg" />
+        <div class="info px-4">
+            <p class="fw-bold header-name m-0" style="font-size: 32px">Егор Луговкин</p>
+            <p class="header-name m-0" style="font-size: 24px">Студент 3-го курса СФУ ИКИТ</p>
+            <p class="header-name m-0" style="font-size: 24px">Программная инженерия</p>
+        </div>
+    </div>
+</header>
+<div class="container content p-4">
+    <div class="card">
+        <div class="card-header fw-bold">
+            Основные навыки
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Разработка клиент-серверных приложений</li>
+                <li>Разработка кросс-платформенных десктопных программ</li>
+                <li>Создание бэкенд решений на языке Python/Java</li>
+                <li>Написание интеграционных и юнит тестов</li>
+                <li>Написание документации</li>
+                <li>Знание алгоритмов и структур данных</li>
+                <li><a href="https://leetcode.com/Njves/">Мой профиль на Leetcode</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header fw-bold">
+            Образование
+        </div>
+        <div class="card-body">
+            <p class="card-text">Окончил МАОУ "КУГ - №1 Универс", г. Красноярск / Универс в 2021 году.</p>
+            <p class="card-text">На данный момент обучаюсь в <img src="https://habrastorage.org/getpro/moikrug/uploads/company/421/414/431/logo/medium_dacfad0ca86ac0ec30befe55e3430fde.png" width="32">Сибирском федеральном университете 👨‍💻Факультет программная иженерия.</p>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header fw-bold">
+            Стек технологий
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Языки программирования</th>
+                    <th scope="col">Базы данных</th>
+                    <th scope="col">Фреймворки/библиотеки</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Python</td>
+                    <td>PostgreSQL</td>
+                    <td>Django</td>
+                </tr>
+                <tr>
+                    <td>Java</td>
+                    <td>SQLite</td>
+                    <td>Flask</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>Redis</td>
+                    <td>JavaFX</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header fw-bold">
+            Связаться со мной
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="d-flex col-sm justify-content-center">
+                        <a href="https://tlgg.ru/@maloy_plakech">
+                            <img src="https://img.shields.io/badge/Telegram-%40maloy__plakech-blue"  alt="Telegram"/>
+                        </a>
+                    </div>
+                    <div class="d-flex col-sm justify-content-center">
+                        <a href="vk.com/elugovkin"><img src="https://img.shields.io/badge/VK-elugovkin-blue"  alt="Вконтакте"/></a>
+                    </div>
+                    <div class="d-flex col-sm justify-content-center">
+                        <a><img src="https://img.shields.io/github/followers/Njves?style=social" /></a>
+                    </div>
+                    <div class="d-flex col-sm justify-content-center">
+                        <a href="mailto:mrpostik@gmail.com">mrpostik@gmail.com</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
-
 </html>
