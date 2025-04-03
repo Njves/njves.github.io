@@ -440,12 +440,11 @@ class Game {
         board.writeText(f)
         
         
-        if(this.isFirst == null || this.isFirst == 'false' && this.firstClick < 10){
+        if(this.isFirst == null || this.isFirst === 'false' && this.firstClick < 10){
             this.tutorial.style.visibility = 'visible'
             this.storage.setIsFirst('false')  
             
         }else{
-            console.log('Change')
             this.tutorial.style.visibility = 'hidden'
             board.hide()
         }
@@ -465,6 +464,9 @@ class Game {
         if (this.clickCount >= this.storage.getMaxCount()){
             this.storage.setMaxCount(this.clickCount)
             max.textContent = this.storage.getMaxCount()    
+        }
+        if (this.clickCount >= 10) {
+            tutorial.style.display = 'none'
         }
     }
 
@@ -541,7 +543,6 @@ let anim = anime({
 snusClick.addEventListener('click', function click(event){
     game.onClick()
     game.updateCounter(counter)
-    
     game.save()
 })
 
