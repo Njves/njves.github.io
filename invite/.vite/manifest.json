@@ -1,0 +1,61 @@
+{
+  "src/assets/Artem.jpg": {
+    "file": "assets/Artem-B2m1LCtR.jpg",
+    "src": "src/assets/Artem.jpg"
+  },
+  "src/assets/alex.jpg": {
+    "file": "assets/alex-QhiTGQqy.jpg",
+    "src": "src/assets/alex.jpg"
+  },
+  "src/assets/daniel.jpg": {
+    "file": "assets/daniel-BSDulsTt.jpg",
+    "src": "src/assets/daniel.jpg"
+  },
+  "src/assets/down.png": {
+    "file": "assets/down-OtB0DAs3.png",
+    "src": "src/assets/down.png"
+  },
+  "src/assets/gleb.jpg": {
+    "file": "assets/gleb-3kZyOHE9.jpg",
+    "src": "src/assets/gleb.jpg"
+  },
+  "src/assets/img.png": {
+    "file": "assets/img-BrqkCV76.png",
+    "src": "src/assets/img.png"
+  },
+  "src/assets/maks.png": {
+    "file": "assets/maks-DgAT3zHl.png",
+    "src": "src/assets/maks.png"
+  },
+  "src/assets/sad.png": {
+    "file": "assets/sad-CB6BhHvc.png",
+    "src": "src/assets/sad.png"
+  },
+  "src/assets/valera.jpg": {
+    "file": "assets/valera-r5o1l1UE.jpg",
+    "src": "src/assets/valera.jpg"
+  },
+  "src/assets/vasya.jpg": {
+    "file": "assets/vasya-w9IvZcx3.jpg",
+    "src": "src/assets/vasya.jpg"
+  },
+  "src/main.js": {
+    "file": "assets/main-c1Dmz5c8.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-DdHI5SbL.css"
+    ],
+    "assets": [
+      "assets/img-BrqkCV76.png",
+      "assets/Artem-B2m1LCtR.jpg",
+      "assets/daniel-BSDulsTt.jpg",
+      "assets/valera-r5o1l1UE.jpg",
+      "assets/maks-DgAT3zHl.png",
+      "assets/alex-QhiTGQqy.jpg",
+      "assets/vasya-w9IvZcx3.jpg",
+      "assets/gleb-3kZyOHE9.jpg"
+    ]
+  }
+}
