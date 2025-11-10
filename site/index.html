@@ -1,540 +1,1314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ландшафтный Дизайн | Создаём райские сады</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #2d5016 0%, #4a7c2e 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #c8e6c9;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a7c2e" width="1200" height="600"/><circle fill="%2366bb6a" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%2381c784" cx="800" cy="400" r="120" opacity="0.2"/><path d="M0,400 Q300,350 600,400 T1200,400 L1200,600 L0,600 Z" fill="%232d5016" opacity="0.5"/></svg>');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 60px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #66bb6a;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover {
-            background: #4caf50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            background: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2d5016;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: #2d5016;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            height: 300px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .portfolio-item:hover {
-            transform: scale(1.05);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(45, 80, 22, 0.9));
-            padding: 2rem;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-
-        .portfolio-overlay h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2d5016;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #66bb6a;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        /* Footer */
-        footer {
-            background: #2d5016;
-            color: white;
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #c8e6c9;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a:hover {
-            color: #c8e6c9;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ландшафтный Дизайн | Создаём райские сады</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
 
-            .hero-content p {
-                font-size: 1rem;
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                color: #333;
+            }
+
+            /* Header */
+            header {
+                background: linear-gradient(135deg, #2d5016 0%, #4a7c2e 100%);
+                color: white;
+                padding: 1rem 0;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .nav-links {
-                gap: 1rem;
+                display: flex;
+                list-style: none;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                transition: color 0.3s;
+                font-weight: 500;
+            }
+
+            .nav-links a:hover {
+                color: #c8e6c9;
+            }
+
+            /* Hero Section */
+            .hero {
+                background:
+                    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a7c2e" width="1200" height="600"/><circle fill="%2366bb6a" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%2381c784" cx="800" cy="400" r="120" opacity="0.2"/><path d="M0,400 Q300,350 600,400 T1200,400 L1200,600 L0,600 Z" fill="%232d5016" opacity="0.5"/></svg>');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .hero-content p {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 1rem 2rem;
+                background: #66bb6a;
+                color: white;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .btn:hover {
+                background: #4caf50;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Services Section */
+            .services {
+                padding: 5rem 2rem;
+                background: #f5f5f5;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
             .section-title {
-                font-size: 2rem;
+                text-align: center;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                color: #2d5016;
             }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">
-                🌿 ЛандшафтПро
+
+            .section-subtitle {
+                text-align: center;
+                color: #666;
+                margin-bottom: 3rem;
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .service-card {
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .service-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card h3 {
+                color: #2d5016;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+            }
+
+            .service-card p {
+                color: #666;
+                line-height: 1.8;
+            }
+
+            /* Portfolio Section */
+            .portfolio {
+                padding: 5rem 2rem;
+                background: white;
+            }
+
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .portfolio-item {
+                position: relative;
+                border-radius: 15px;
+                overflow: hidden;
+                height: 300px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+
+            .portfolio-item:hover {
+                transform: scale(1.05);
+            }
+
+            .portfolio-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .portfolio-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(45, 80, 22, 0.9));
+                padding: 2rem;
+                color: white;
+                transform: translateY(100%);
+                transition: transform 0.3s;
+            }
+
+            .portfolio-item:hover .portfolio-overlay {
+                transform: translateY(0);
+            }
+
+            .portfolio-overlay h3 {
+                margin-bottom: 0.5rem;
+            }
+
+            /* Contact Section */
+            .contact {
+                padding: 5rem 2rem;
+                background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            }
+
+            .contact-content {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .contact-form {
+                background: white;
+                padding: 3rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #2d5016;
+                font-weight: 600;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 1rem;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 1rem;
+                transition: border-color 0.3s;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: #66bb6a;
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 150px;
+            }
+
+            /* Footer */
+            footer {
+                background: #2d5016;
+                color: white;
+                padding: 3rem 2rem 1rem;
+                text-align: center;
+            }
+
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-section h3 {
+                margin-bottom: 1rem;
+                color: #c8e6c9;
+            }
+
+            .footer-section p,
+            .footer-section a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section a:hover {
+                color: #c8e6c9;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 1rem;
+                margin-top: 2rem;
+            }
+
+            /* Loyalty Program Styles */
+            .loyalty {
+                padding: 5rem 2rem;
+                background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            }
+
+            .loyalty-header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .loyalty-header h2 {
+                color: #f57f17;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .loyalty-tiers {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .tier-card {
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+                border: 3px solid transparent;
+            }
+
+            .tier-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .tier-card.bronze {
+                border-color: #cd7f32;
+            }
+
+            .tier-card.silver {
+                border-color: #c0c0c0;
+            }
+
+            .tier-card.gold {
+                border-color: #ffd700;
+                background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+            }
+
+            .tier-card.platinum {
+                border-color: #e5e4e2;
+                background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            }
+
+            .tier-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .tier-name {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+            }
+
+            .tier-card.bronze .tier-name {
+                color: #cd7f32;
+            }
+
+            .tier-card.silver .tier-name {
+                color: #7d7d7d;
+            }
+
+            .tier-card.gold .tier-name {
+                color: #d4af37;
+            }
+
+            .tier-card.platinum .tier-name {
+                color: #4a4a4a;
+            }
+
+            .tier-benefits {
+                list-style: none;
+                text-align: left;
+                margin-top: 1rem;
+            }
+
+            .tier-benefits li {
+                padding: 0.5rem 0;
+                color: #666;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .tier-benefits li:before {
+                content: "✓ ";
+                color: #66bb6a;
+                font-weight: bold;
+                margin-right: 0.5rem;
+            }
+
+            .tier-requirement {
+                margin-top: 1rem;
+                padding: 1rem;
+                background: #f5f5f5;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .loyalty-cta {
+                text-align: center;
+                margin-top: 3rem;
+            }
+
+            .btn-loyalty {
+                display: inline-block;
+                padding: 1.2rem 3rem;
+                background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+                color: #2d5016;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                font-size: 1.2rem;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn-loyalty:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            }
+
+            /* Modal Styles */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 2000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                animation: fadeIn 0.3s;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .modal-content {
+                background-color: white;
+                margin: 5% auto;
+                padding: 3rem;
+                border-radius: 20px;
+                width: 90%;
+                max-width: 600px;
+                position: relative;
+                animation: slideIn 0.3s;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateY(-50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .close {
+                color: #aaa;
+                position: absolute;
+                right: 1.5rem;
+                top: 1.5rem;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: color 0.3s;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #2d5016;
+            }
+
+            .modal-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .modal-header h2 {
+                color: #2d5016;
+                margin-bottom: 0.5rem;
+            }
+
+            .loyalty-profile-card {
+                background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+                padding: 2rem;
+                border-radius: 15px;
+                margin-bottom: 2rem;
+            }
+
+            .profile-header {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .profile-avatar {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #66bb6a 0%, #4a7c2e 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                color: white;
+            }
+
+            .profile-info h3 {
+                margin: 0;
+                color: #2d5016;
+            }
+
+            .profile-tier {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .points-display {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 10px;
+                margin-bottom: 1.5rem;
+            }
+
+            .points-number {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #2d5016;
+                margin-bottom: 0.5rem;
+            }
+
+            .points-label {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .progress-bar {
+                background: #e0e0e0;
+                height: 10px;
+                border-radius: 5px;
+                overflow: hidden;
+                margin-top: 1rem;
+            }
+
+            .progress-fill {
+                background: linear-gradient(90deg, #66bb6a 0%, #4a7c2e 100%);
+                height: 100%;
+                transition: width 0.3s;
+            }
+
+            .next-tier {
+                margin-top: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .benefits-list {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .benefits-list h4 {
+                color: #2d5016;
+                margin-bottom: 1rem;
+            }
+
+            .benefits-list ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .benefits-list li {
+                padding: 0.5rem 0;
+                color: #666;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .benefits-list li:before {
+                content: "🌟 ";
+                margin-right: 0.5rem;
+            }
+
+            .loyalty-profile {
+                background: rgba(255, 255, 255, 0.2);
+                padding: 0.5rem 1rem;
+                border-radius: 25px;
+                transition: background 0.3s;
+            }
+
+            .loyalty-profile:hover {
+                background: rgba(255, 255, 255, 0.3);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .hero-content h1 {
+                    font-size: 2rem;
+                }
+
+                .hero-content p {
+                    font-size: 1rem;
+                }
+
+                .nav-links {
+                    gap: 1rem;
+                }
+
+                .section-title {
+                    font-size: 2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <nav>
+                <div class="logo">🌿 ЛандшафтПро</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#loyalty">Программа лояльности</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li>
+                        <a
+                            href="#"
+                            id="loyalty-profile-link"
+                            class="loyalty-profile"
+                            >👤 Личный кабинет</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Создаём райские сады</h1>
+                <p>Профессиональный ландшафтный дизайн для вашего участка</p>
+                <a href="#contact" class="btn">Получить консультацию</a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#portfolio">Портфолио</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+        </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Создаём райские сады</h1>
-            <p>Профессиональный ландшафтный дизайн для вашего участка</p>
-            <a href="#contact" class="btn">Получить консультацию</a>
-        </div>
-    </section>
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Наши услуги</h2>
+                <p class="section-subtitle">
+                    Комплексный подход к благоустройству территории
+                </p>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <p class="section-subtitle">Комплексный подход к благоустройству территории</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🌳</div>
-                    <h3>Проектирование</h3>
-                    <p>Разработка индивидуального дизайн-проекта с учётом особенностей вашего участка и пожеланий</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🌺</div>
-                    <h3>Озеленение</h3>
-                    <p>Подбор и посадка растений, создание цветников, газонов и живых изгородей</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">💧</div>
-                    <h3>Водоёмы</h3>
-                    <p>Проектирование и создание декоративных прудов, фонтанов и ручьёв</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🪨</div>
-                    <h3>Мощение</h3>
-                    <p>Устройство дорожек, патио и площадок из натурального камня и плитки</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">💡</div>
-                    <h3>Освещение</h3>
-                    <p>Создание атмосферной подсветки сада и функционального освещения участка</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🛠️</div>
-                    <h3>Уход</h3>
-                    <p>Сезонное обслуживание сада, стрижка, подкормка и защита растений</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🌳</div>
+                        <h3>Проектирование</h3>
+                        <p>
+                            Разработка индивидуального дизайн-проекта с учётом
+                            особенностей вашего участка и пожеланий
+                        </p>
+                    </div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Наши работы</h2>
-            <p class="section-subtitle">Реализованные проекты</p>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                        <rect fill="#4a7c2e" width="100%" height="100%"/>
-                        <circle fill="#66bb6a" cx="50%" cy="40%" r="80" opacity="0.6"/>
-                        <circle fill="#81c784" cx="30%" cy="60%" r="60" opacity="0.5"/>
-                        <rect fill="#2d5016" y="70%" width="100%" height="30%"/>
-                    </svg>
-                    <div class="portfolio-overlay">
-                        <h3>Загородный сад</h3>
-                        <p>Площадь: 15 соток</p>
+                    <div class="service-card">
+                        <div class="service-icon">🌺</div>
+                        <h3>Озеленение</h3>
+                        <p>
+                            Подбор и посадка растений, создание цветников,
+                            газонов и живых изгородей
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💧</div>
+                        <h3>Водоёмы</h3>
+                        <p>
+                            Проектирование и создание декоративных прудов,
+                            фонтанов и ручьёв
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🪨</div>
+                        <h3>Мощение</h3>
+                        <p>
+                            Устройство дорожек, патио и площадок из натурального
+                            камня и плитки
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💡</div>
+                        <h3>Освещение</h3>
+                        <p>
+                            Создание атмосферной подсветки сада и
+                            функционального освещения участка
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Уход</h3>
+                        <p>
+                            Сезонное обслуживание сада, стрижка, подкормка и
+                            защита растений
+                        </p>
                     </div>
                 </div>
-                
-                <div class="portfolio-item">
-                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                        <rect fill="#81c784" width="100%" height="100%"/>
-                        <ellipse fill="#4caf50" cx="50%" cy="50%" rx="150" ry="100" opacity="0.7"/>
-                        <circle fill="#2e7d32" cx="70%" cy="30%" r="50" opacity="0.6"/>
-                    </svg>
-                    <div class="portfolio-overlay">
-                        <h3>Японский сад</h3>
-                        <p>Площадь: 8 соток</p>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2 class="section-title">Наши работы</h2>
+                <p class="section-subtitle">Реализованные проекты</p>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <svg
+                            width="100%"
+                            height="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect fill="#4a7c2e" width="100%" height="100%" />
+                            <circle
+                                fill="#66bb6a"
+                                cx="50%"
+                                cy="40%"
+                                r="80"
+                                opacity="0.6"
+                            />
+                            <circle
+                                fill="#81c784"
+                                cx="30%"
+                                cy="60%"
+                                r="60"
+                                opacity="0.5"
+                            />
+                            <rect
+                                fill="#2d5016"
+                                y="70%"
+                                width="100%"
+                                height="30%"
+                            />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Загородный сад</h3>
+                            <p>Площадь: 15 соток</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <svg
+                            width="100%"
+                            height="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect fill="#81c784" width="100%" height="100%" />
+                            <ellipse
+                                fill="#4caf50"
+                                cx="50%"
+                                cy="50%"
+                                rx="150"
+                                ry="100"
+                                opacity="0.7"
+                            />
+                            <circle
+                                fill="#2e7d32"
+                                cx="70%"
+                                cy="30%"
+                                r="50"
+                                opacity="0.6"
+                            />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Японский сад</h3>
+                            <p>Площадь: 8 соток</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <svg
+                            width="100%"
+                            height="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <defs>
+                                <linearGradient
+                                    id="grad1"
+                                    x1="0%"
+                                    y1="0%"
+                                    x2="0%"
+                                    y2="100%"
+                                >
+                                    <stop
+                                        offset="0%"
+                                        style="
+                                            stop-color: #66bb6a;
+                                            stop-opacity: 1;
+                                        "
+                                    />
+                                    <stop
+                                        offset="100%"
+                                        style="
+                                            stop-color: #2d5016;
+                                            stop-opacity: 1;
+                                        "
+                                    />
+                                </linearGradient>
+                            </defs>
+                            <rect
+                                fill="url(#grad1)"
+                                width="100%"
+                                height="100%"
+                            />
+                            <circle
+                                fill="#a5d6a7"
+                                cx="40%"
+                                cy="40%"
+                                r="70"
+                                opacity="0.5"
+                            />
+                            <circle
+                                fill="#c8e6c9"
+                                cx="65%"
+                                cy="55%"
+                                r="90"
+                                opacity="0.4"
+                            />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Альпийская горка</h3>
+                            <p>Площадь: 3 сотки</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="portfolio-item">
-                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#2d5016;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect fill="url(#grad1)" width="100%" height="100%"/>
-                        <circle fill="#a5d6a7" cx="40%" cy="40%" r="70" opacity="0.5"/>
-                        <circle fill="#c8e6c9" cx="65%" cy="55%" r="90" opacity="0.4"/>
-                    </svg>
-                    <div class="portfolio-overlay">
-                        <h3>Альпийская горка</h3>
-                        <p>Площадь: 3 сотки</p>
+            </div>
+        </section>
+
+        <!-- Loyalty Program Section -->
+        <section id="loyalty" class="loyalty">
+            <div class="container">
+                <div class="loyalty-header">
+                    <h2>Программа лояльности</h2>
+                    <p class="section-subtitle">
+                        Получайте бонусы за каждый заказ и наслаждайтесь
+                        эксклюзивными привилегиями
+                    </p>
+                </div>
+
+                <div class="loyalty-tiers">
+                    <div class="tier-card bronze">
+                        <div class="tier-icon">🥉</div>
+                        <div class="tier-name">Бронза</div>
+                        <ul class="tier-benefits">
+                            <li>5% бонусами за каждый заказ</li>
+                            <li>Приоритетная поддержка</li>
+                            <li>Скидка на повторные заказы</li>
+                        </ul>
+                        <div class="tier-requirement">
+                            Вступительный уровень
+                        </div>
+                    </div>
+
+                    <div class="tier-card silver">
+                        <div class="tier-icon">🥈</div>
+                        <div class="tier-name">Серебро</div>
+                        <ul class="tier-benefits">
+                            <li>7% бонусами за каждый заказ</li>
+                            <li>Бесплатная консультация 1 раз в год</li>
+                            <li>Приоритетная запись</li>
+                            <li>Скидка 5% на все услуги</li>
+                        </ul>
+                        <div class="tier-requirement">
+                            От 50 000 ₽ в заказах
+                        </div>
+                    </div>
+
+                    <div class="tier-card gold">
+                        <div class="tier-icon">🥇</div>
+                        <div class="tier-name">Золото</div>
+                        <ul class="tier-benefits">
+                            <li>10% бонусами за каждый заказ</li>
+                            <li>Бесплатная консультация 2 раза в год</li>
+                            <li>Персональный менеджер</li>
+                            <li>Скидка 10% на все услуги</li>
+                            <li>Специальные сезонные предложения</li>
+                        </ul>
+                        <div class="tier-requirement">
+                            От 150 000 ₽ в заказах
+                        </div>
+                    </div>
+
+                    <div class="tier-card platinum">
+                        <div class="tier-icon">💎</div>
+                        <div class="tier-name">Платина</div>
+                        <ul class="tier-benefits">
+                            <li>15% бонусами за каждый заказ</li>
+                            <li>Безлимитные консультации</li>
+                            <li>VIP обслуживание</li>
+                            <li>Скидка 15% на все услуги</li>
+                            <li>Эксклюзивные предложения</li>
+                            <li>Приоритет в графике работ</li>
+                        </ul>
+                        <div class="tier-requirement">
+                            От 300 000 ₽ в заказах
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-content">
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <p class="section-subtitle">Оставьте заявку и получите бесплатную консультацию</p>
-            
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" name="name" required>
+                <div class="loyalty-cta">
+                    <button class="btn-loyalty" id="join-loyalty-btn">
+                        Присоединиться к программе
+                    </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="phone">Телефон</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn">Отправить заявку</button>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>О компании</h3>
-                <p>Профессиональный ландшафтный дизайн с 2010 года. Более 500 реализованных проектов.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <p>📞 +7 (495) 123-45-67</p>
-                <p>📧 info@landscape-pro.ru</p>
-                <p>📍 Москва, ул. Садовая, 10</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Режим работы</h3>
-                <p>Пн-Пт: 9:00 - 20:00</p>
-                <p>Сб-Вс: 10:00 - 18:00</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 ЛандшафтПро. Все права защищены.</p>
-        </div>
-    </footer>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="contact-content">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="section-subtitle">
+                    Оставьте заявку и получите бесплатную консультацию
+                </p>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loyalty Profile Modal -->
+        <div id="loyalty-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2>Личный кабинет</h2>
+                    <p>Программа лояльности ЛандшафтПро</p>
+                </div>
+
+                <div class="loyalty-profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-info">
+                            <h3 id="user-name">Александр Иванов</h3>
+                            <p class="profile-tier">
+                                Статус: <span id="user-tier">Золото</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="points-display">
+                        <div class="points-number" id="user-points">2,450</div>
+                        <div class="points-label">Бонусных баллов</div>
+                        <div class="progress-bar">
+                            <div
+                                class="progress-fill"
+                                id="progress-fill"
+                                style="width: 65%"
+                            ></div>
+                        </div>
+                        <div class="next-tier" id="next-tier-text">
+                            До статуса "Платина" осталось: 50,000 ₽
+                        </div>
+                    </div>
+
+                    <div class="benefits-list">
+                        <h4>Ваши привилегии</h4>
+                        <ul id="user-benefits">
+                            <li>10% бонусами за каждый заказ</li>
+                            <li>Бесплатная консультация 2 раза в год</li>
+                            <li>Персональный менеджер</li>
+                            <li>Скидка 10% на все услуги</li>
+                            <li>Специальные сезонные предложения</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem">
+                    <p style="color: #666; font-size: 0.9rem">
+                        💡 Совершайте заказы и повышайте свой статус для
+                        получения больших привилегий!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>
+                        Профессиональный ландшафтный дизайн с 2010 года. Более
+                        500 реализованных проектов.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>📧 info@landscape-pro.ru</p>
+                    <p>📍 Москва, ул. Садовая, 10</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 20:00</p>
+                    <p>Сб-Вс: 10:00 - 18:00</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ЛандшафтПро. Все права защищены.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(
+                        this.getAttribute("href"),
+                    );
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
+
+            // Form submission
+            document
+                .querySelector(".contact-form")
+                .addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    alert(
+                        "Спасибо за заявку! Мы свяжемся с вами в ближайшее время.",
+                    );
+                    this.reset();
+                });
+
+            // Loyalty System
+            const loyaltyModal = document.getElementById("loyalty-modal");
+            const loyaltyProfileLink = document.getElementById(
+                "loyalty-profile-link",
+            );
+            const joinLoyaltyBtn = document.getElementById("join-loyalty-btn");
+            const closeBtn = document.querySelector(".close");
+
+            // User data (в реальном приложении это будет храниться на сервере)
+            let userData = {
+                name: "Александр Иванов",
+                tier: "gold",
+                points: 2450,
+                totalSpent: 250000,
+                tierNames: {
+                    bronze: "Бронза",
+                    silver: "Серебро",
+                    gold: "Золото",
+                    platinum: "Платина",
+                },
+                tierRequirements: {
+                    bronze: 0,
+                    silver: 50000,
+                    gold: 150000,
+                    platinum: 300000,
+                },
+                tierBenefits: {
+                    bronze: [
+                        "5% бонусами за каждый заказ",
+                        "Приоритетная поддержка",
+                        "Скидка на повторные заказы",
+                    ],
+                    silver: [
+                        "7% бонусами за каждый заказ",
+                        "Бесплатная консультация 1 раз в год",
+                        "Приоритетная запись",
+                        "Скидка 5% на все услуги",
+                    ],
+                    gold: [
+                        "10% бонусами за каждый заказ",
+                        "Бесплатная консультация 2 раза в год",
+                        "Персональный менеджер",
+                        "Скидка 10% на все услуги",
+                        "Специальные сезонные предложения",
+                    ],
+                    platinum: [
+                        "15% бонусами за каждый заказ",
+                        "Безлимитные консультации",
+                        "VIP обслуживание",
+                        "Скидка 15% на все услуги",
+                        "Эксклюзивные предложения",
+                        "Приоритет в графике работ",
+                    ],
+                },
+            };
+
+            // Функция для обновления отображения профиля
+            function updateProfileDisplay() {
+                document.getElementById("user-name").textContent =
+                    userData.name;
+                document.getElementById("user-tier").textContent =
+                    userData.tierNames[userData.tier];
+                document.getElementById("user-points").textContent =
+                    userData.points.toLocaleString("ru-RU");
+
+                // Определяем следующий уровень
+                let nextTier = null;
+                let nextTierAmount = 0;
+                const tierLevels = ["bronze", "silver", "gold", "platinum"];
+                const currentTierIndex = tierLevels.indexOf(userData.tier);
+
+                if (currentTierIndex < tierLevels.length - 1) {
+                    nextTier = tierLevels[currentTierIndex + 1];
+                    nextTierAmount =
+                        userData.tierRequirements[nextTier] -
+                        userData.totalSpent;
+
+                    // Прогресс к следующему уровню
+                    const currentRequirement =
+                        userData.tierRequirements[userData.tier];
+                    const nextRequirement = userData.tierRequirements[nextTier];
+                    const progress =
+                        ((userData.totalSpent - currentRequirement) /
+                            (nextRequirement - currentRequirement)) *
+                        100;
+
+                    document.getElementById("progress-fill").style.width =
+                        Math.min(progress, 100) + "%";
+                    document.getElementById("next-tier-text").textContent =
+                        `До статуса "${userData.tierNames[nextTier]}" осталось: ${nextTierAmount.toLocaleString("ru-RU")} ₽`;
+                } else {
+                    // Максимальный уровень достигнут
+                    document.getElementById("progress-fill").style.width =
+                        "100%";
+                    document.getElementById("next-tier-text").textContent =
+                        "🎉 Вы достигли максимального статуса!";
+                }
+
+                // Обновляем список привилегий
+                const benefitsList = document.getElementById("user-benefits");
+                benefitsList.innerHTML = "";
+                userData.tierBenefits[userData.tier].forEach((benefit) => {
+                    const li = document.createElement("li");
+                    li.textContent = benefit;
+                    benefitsList.appendChild(li);
+                });
+            }
+
+            // Открытие модального окна профиля
+            loyaltyProfileLink.addEventListener("click", function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                updateProfileDisplay();
+                loyaltyModal.style.display = "block";
+            });
+
+            // Присоединение к программе
+            joinLoyaltyBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                // В реальном приложении здесь будет форма регистрации
+                alert(
+                    'Добро пожаловать в программу лояльности ЛандшафтПро! 🌿\n\nВы получили статус "Бронза" и 100 приветственных бонусов!',
+                );
+
+                // Обновляем данные пользователя
+                userData.tier = "bronze";
+                userData.points = 100;
+                userData.totalSpent = 0;
+
+                updateProfileDisplay();
+                loyaltyModal.style.display = "block";
+            });
+
+            // Закрытие модального окна
+            closeBtn.addEventListener("click", function () {
+                loyaltyModal.style.display = "none";
+            });
+
+            // Закрытие при клике вне модального окна
+            window.addEventListener("click", function (event) {
+                if (event.target === loyaltyModal) {
+                    loyaltyModal.style.display = "none";
                 }
             });
-        });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
-            this.reset();
-        });
-    </script>
-</body>
+            // Симуляция добавления баллов (для демонстрации)
+            function addPoints(amount) {
+                const tierBonuses = {
+                    bronze: 0.05,
+                    silver: 0.07,
+                    gold: 0.1,
+                    platinum: 0.15,
+                };
+
+                const bonus = Math.floor(amount * tierBonuses[userData.tier]);
+                userData.points += bonus;
+                userData.totalSpent += amount;
+
+                // Проверяем повышение статуса
+                if (
+                    userData.totalSpent >= 300000 &&
+                    userData.tier !== "platinum"
+                ) {
+                    userData.tier = "platinum";
+                    alert('🎉 Поздравляем! Вы достигли статуса "Платина"!');
+                } else if (
+                    userData.totalSpent >= 150000 &&
+                    userData.tier === "silver"
+                ) {
+                    userData.tier = "gold";
+                    alert('🎉 Поздравляем! Вы достигли статуса "Золото"!');
+                } else if (
+                    userData.totalSpent >= 50000 &&
+                    userData.tier === "bronze"
+                ) {
+                    userData.tier = "silver";
+                    alert('🎉 Поздравляем! Вы достигли статуса "Серебро"!');
+                }
+
+                updateProfileDisplay();
+            }
+
+            // Функция для тестирования (можно вызвать из консоли браузера)
+            window.loyaltyTest = {
+                addOrder: function (amount) {
+                    addPoints(amount);
+                    alert(
+                        `Заказ на ${amount.toLocaleString("ru-RU")} ₽ обработан!\nНачислено бонусов: ${Math.floor(amount * (userData.tier === "bronze" ? 0.05 : userData.tier === "silver" ? 0.07 : userData.tier === "gold" ? 0.1 : 0.15))}`,
+                    );
+                },
+                showProfile: function () {
+                    updateProfileDisplay();
+                    loyaltyModal.style.display = "block";
+                },
+            };
+        </script>
+    </body>
 </html>
